@@ -12,23 +12,93 @@
     <h1>Prihlaska na tabor</h1>
     
     <form id="sheetdb-form" action="https://sheetdb.io/api/v1/pw59oab2vwgdi" method="POST">
-        <label for="jmeno">Jmeno: </label>
-        <input type="text" name="data[Jmeno]" placeholder="Karel" />
-        <br /> <br />
-        <label for="bday">Datum narozeni </label>
-        <input type="date" name="data[DatNar]" />
-        <br /><br />
-        <label for="plavec">Schopnost ditete plavat:</label>
-        <select name="data[Plavec]">
-            <option value="plavec">umi plavat</option>
-            <option value="neplavec">neumi plavat</option>
-            <option value="poloplavec">alespon se neutopi</option>
-        </select>
+        <h3>O dítěti:</h3>
+        <fieldset>
+            <label for="jmeno">Jméno: </label>
+            <input type="text" name="data[jmeno]" placeholder="Karel" required />
+            <br />
+            <br />
+            <label>Příjmení: </label>
+            <input type="text" name="data[prijmeni]" placeholder="Novotný" required />
+            <br />
+            <br />
+            <label>Rodné číslo: (10 číslic bez lomítka)</label>
+            <input type="number" name="data[rc]" placeholder="0011228899" required />
+            <br />
+            <br />
+            <label for="bday">Datum narození </label>
+            <input type="date" name="data[datnar]" required />
+            <br /><br />
+            <label>Schopnost dítěte plavat:</label>
+            <select name="data[plavani]" required>
+                <option value="plavec">umí plavat</option>
+                <option value="neplavec">neumí plavat</option>
+                <option value="poloplavec">alespoň se neutopi</option>
+            </select>
+            <br />
+            <br />
+            <label>Adresa:</label>
+            <input type="text" name="data[adresa]" placeholder="Nová Ulice 215, Brno 354 02" required/>
+            <br />
+            <br />
+            <label>Pojišťovna:</label>
+            <input type="text" name="data[pojistovna]" placeholder="VZP"  required/>
+            <br />
+            <br />
+            <label>Další informace (zdravotní omezení, alergie, fobie...)</label>
+            <br />
+            <textarea name="data[dalsi]" rows="10" cols="20"></textarea>
+        </fieldset>
+        <br />
+        <h3>Údaje o rodičovi/kontaktní osobě</h3>
+        <p>Prosím o vyplnění údajů o minimálně jedné osobě, ideálně však o dvou</p>
+        <fieldset>
+            <table>
+                <tr>
+                    <th>1. osoba</th>
+                    <th>2. osoba</th>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Jméno:</label>
+                        <input type="text" name="data[jmenoos1]" required />
+                        <br />
+                        <br />
+                        <label>Příjmení:</label>
+                        <input type="text" name="data[prijmenios1]" required />
+                        <br />
+                        <br />
+                        <label>Telefon:</label>
+                        <input type="number" name="data[telos1]" required />
+                        <br />
+                        <br />
+                        <label>Email:</label>
+                        <input type="email" name="data[emailos1]" required />
+                    </td>
+                    <td>
+                        <label>Jméno:</label>
+                        <input type="text" name="data[jmenoos2]" placeholder="nepovinné" />
+                        <br />
+                        <br />
+                        <label>Příjmení:</label>
+                        <input type="text" name="data[prijmenios2]" placeholder="nepovinné" />
+                        <br />
+                        <br />
+                        <label>Telefon:</label>
+                        <input type="number" name="data[telos2]" placeholder="nepovinné" />
+                        <br />
+                        <br />
+                        <label>Email:</label>
+                        <input type="email" name="data[mailos2]" placeholder="nepovinné" />
+                    </td>    
+                </tr>
+            </table>
+        </fieldset>
         <br />
         <br />
-        <button type="submit" value="Submit">Send</button>
+        <button type="submit" value="Submit">Odeslat přihlášku</button>
     </form>
-
+    
     <script>
         var form = document.getElementById('sheetdb-form');
         form.addEventListener("submit", e => {
