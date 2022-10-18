@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>YMCA Strmilov LT</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+
+
+
+  <body>
+    <h1>Prihlaska na tabor</h1>
+    
+    <form id="sheetdb-form" action="https://sheetdb.io/api/v1/pw59oab2vwgdi" method="POST">
+        <label for="jmeno">Jmeno: </label>
+        <input type="text" name="data[Jmeno]" placeholder="Karel" />
+        <br /> <br />
+        <label for="bday">Datum narozeni </label>
+        <input type="date" name="data[DatNar]" />
+        <br /><br />
+        <label for="plavec">Schopnost ditete plavat:</label>
+        <select name="data[Plavec]">
+            <option value="plavec">umi plavat</option>
+            <option value="neplavec">neumi plavat</option>
+            <option value="poloplavec">alespon se neutopi</option>
+        </select>
+        <br />
+        <br />
+        <button type="submit" value="Submit">Send</button>
+    </form>
+
+    <script>
+        var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(document.getElementById("sheetdb-form")),
+            }).then(
+                response => response.json()
+            ).then((html) => {
+                // you can put any JS code here
+                alert("Prihlaska byla odeslana, dekujeme")
+            });
+        });
+    </script>
+  
+  </body>
+</html>
